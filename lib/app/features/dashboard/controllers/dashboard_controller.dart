@@ -136,20 +136,20 @@ class DashboardController extends GetxController {
       ProjectCardData(
         percent: .3,
         projectImage: const AssetImage(ImageRasterPath.logo2),
-        projectName: "Menambahkan 10 ekor ternak",
-        releaseTime: DateTime.now().add(const Duration(days: 130)),
+        projectName: "Driver 102 Start",
+        releaseTime: DateTime.now().add(const Duration(days: 1)),
       ),
       ProjectCardData(
         percent: .5,
         projectImage: const AssetImage(ImageRasterPath.logo3),
-        projectName: "Menyiapkan pesanan 23 ekor sapi brahman",
-        releaseTime: DateTime.now().add(const Duration(days: 140)),
+        projectName: "Driver 103 OTW",
+        releaseTime: DateTime.now().add(const Duration(days: 2)),
       ),
       ProjectCardData(
         percent: .8,
         projectImage: const AssetImage(ImageRasterPath.logo4),
-        projectName: "Pembelian obat hewan",
-        releaseTime: DateTime.now().add(const Duration(days: 100)),
+        projectName: "Ternak 1022 Terbooking",
+        releaseTime: DateTime.now().add(const Duration(days: 1)),
       ),
     ];
   }

@@ -16,13 +16,13 @@ class _OverviewHeader extends StatelessWidget {
       () => Row(
         children: [
           const Text(
-            "Task Overview",
+            "Dashboard Peternakan",
             style: TextStyle(fontWeight: FontWeight.w600),
           ),
           const Spacer(),
           _button(
             selected: task.value == null,
-            label: "All",
+            label: "Semua",
             onPressed: () {
               task.value = null;
               onSelected(null);
@@ -30,7 +30,7 @@ class _OverviewHeader extends StatelessWidget {
           ),
           _button(
             selected: task.value == TaskType.todo,
-            label: "To do",
+            label: "Ternak Terjual",
             onPressed: () {
               task.value = TaskType.todo;
               onSelected(TaskType.todo);
@@ -38,15 +38,23 @@ class _OverviewHeader extends StatelessWidget {
           ),
           _button(
             selected: task.value == TaskType.inProgress,
-            label: "In progress",
+            label: "Proses Kirim",
             onPressed: () {
               task.value = TaskType.inProgress;
               onSelected(TaskType.inProgress);
             },
           ),
           _button(
+            selected: task.value == TaskType.onGoing,
+            label: "Dikirim",
+            onPressed: () {
+              task.value = TaskType.onGoing;
+              onSelected(TaskType.onGoing);
+            },
+          ),
+          _button(
             selected: task.value == TaskType.done,
-            label: "Done",
+            label: "Terkirim",
             onPressed: () {
               task.value = TaskType.done;
               onSelected(TaskType.done);
@@ -71,7 +79,8 @@ class _OverviewHeader extends StatelessWidget {
         ),
         style: ElevatedButton.styleFrom(
           primary: selected
-              ? Theme.of(Get.context!).cardColor
+              // ? Theme.of(Get.context!).cardColor
+              ? Colors.lightBlue
               : Theme.of(Get.context!).canvasColor,
           onPrimary: selected ? kFontColorPallets[0] : kFontColorPallets[2],
           shape: RoundedRectangleBorder(

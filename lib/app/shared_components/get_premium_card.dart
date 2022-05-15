@@ -61,13 +61,13 @@ class _Info extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          "Get\nPremium\nAccount",
+          "Get\nPremium\nFitur",
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
         Text(
-          "To add more members",
+          "To add more Efisien",
           style: Theme.of(context).textTheme.caption,
         ),
       ],

@@ -21,6 +21,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'data_peternakan.dart';
+import 'keuangan_screen.dart';
+import 'pegawai_screen.dart';
+import 'penjualan_screen.dart';
 import 'report_screen.dart';
 
 // binding
@@ -79,9 +82,9 @@ class DashboardScreen extends GetView<DashboardController> {
                             _buildTaskOverview(data: controller.getAllTask2()),
                       ),
                       DataPeternakan(),
-                      Text("4"),
-                      Text("5"),
-                      Text("6"),
+                      KeuanganScreen(),
+                      PegawaiScreen(),
+                      PenjualanScreen()
                     ],
                   )),
             ),

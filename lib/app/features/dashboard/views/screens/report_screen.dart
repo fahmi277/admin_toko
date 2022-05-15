@@ -19,39 +19,67 @@ class ReportScreen extends GetView {
         crossAxisAlignment: CrossAxisAlignment.start,
         // children: [widget],
         children: [
-          Text("Laporan Peternakan"),
+          Text("Laporan Peternakan",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
           SizedBox(
-            height: 175,
+            height: kSpacing,
+          ),
+          SizedBox(
+            height: 150,
             width: 300,
             child: Card(
-              child: Padding(
-                padding: EdgeInsets.all(kSpacing),
-                child: Column(
-                  children: [
-                    Text("Total Penjualan Ternak",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold)),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      // ignore: prefer_const_literals_to_create_immutables
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(kBorderRadius),
+              ),
+              child: Stack(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: kSpacing, vertical: kSpacing),
+                    child: Column(
                       children: [
-                        Text(
-                          "219",
-                          style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold),
+                        Text("Total Penjualan Ternak",
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold)),
+                        SizedBox(
+                          height: kSpacing,
                         ),
-                        Text(
-                          " Ekor",
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
-                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          // ignore: prefer_const_literals_to_create_immutables
+                          children: [
+                            Text(
+                              "219",
+                              style: TextStyle(
+                                  fontSize: 35, fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              " Ekor",
+                              style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        )
                       ],
-                    )
-                  ],
-                ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Align(
+                      alignment: Alignment.bottomRight,
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Theme.of(Get.context!).primaryColorLight,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                          onPressed: () {},
+                          child: Text("Details")),
+                    ),
+                  )
+                ],
               ),
             ),
           )
