@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_management/app/constans/app_constants.dart';
+import 'package:project_management/app/features/dashboard/views/screens/dashboard_screen.dart';
 import 'package:project_management/app/shared_components/task_card.dart';
 
 import '../../../../utils/helpers/app_helpers.dart';
@@ -12,6 +13,7 @@ class DataPeternakan extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DashboardController dashboardController = Get.find();
     return Padding(
       padding: EdgeInsets.all(kSpacing),
       child: Column(
@@ -19,35 +21,37 @@ class DataPeternakan extends StatelessWidget {
         // ignore: prefer_const_literals_to_create_immutables
         children: [
           _OverviewHeader(
+            dashboardController: dashboardController,
             onSelected: (task) {},
           ),
           SizedBox(
             height: 20,
           ),
-          SizedBox(
-            height: double.maxFinite,
-            child: ListView.builder(
-                scrollDirection: Axis.vertical,
-                itemCount: 8,
-                itemBuilder: ((context, index) {
-                  return FittedBox(
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          height: 100,
-                          width: 300,
-                          child: Card(
-                              child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("Sapi Brahman"),
-                            ],
-                          )),
-                        ),
-                        SizedBox(
-                          height: 100,
-                          width: 300,
-                          child: Card(
+          Obx(() => SizedBox(
+                      height: double.maxFinite,
+                      child: ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          itemCount: dashboardController.menuDataPeternakan.value,
+                          itemBuilder: ((context, index) {
+                            return FittedBox(
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    height: 100,
+                                    width: 300,
+                                    child: Card(
+                                        child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      // ignore: prefer_const_literals_to_create_immutables
+                                      children: [
+                                        Text("Sapi Brahman"),
+                                      ],
+                                    )),
+                                  ),
+                                  SizedBox(
+                                    height: 100,
+                                    width: 300,
+                                    child: Card(
                               child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [Text("Sapi Bali")],
@@ -66,7 +70,7 @@ class DataPeternakan extends StatelessWidget {
                     ),
                   );
                 })),
-          )
+          )),
           // TaskDataPeternakan()
         ],
       ),
@@ -75,12 +79,14 @@ class DataPeternakan extends StatelessWidget {
 }
 
 class _OverviewHeader extends StatelessWidget {
-  const _OverviewHeader({
+   _OverviewHeader({
     required this.onSelected,
+    required this.dashboardController,
     Key? key,
   }) : super(key: key);
 
   final Function(TaskType? task) onSelected;
+  DashboardController dashboardController;
 
   @override
   Widget build(BuildContext context) {
@@ -98,30 +104,34 @@ class _OverviewHeader extends StatelessWidget {
             selected: task.value == null,
             label: "Semua",
             onPressed: () {
+              dashboardController.menuDataPeternakan.value = 0;
               task.value = null;
               onSelected(null);
             },
           ),
           _button(
             selected: task.value == TaskType.todo,
-            label: "Ternak Terjual",
+            label: "Booking",
             onPressed: () {
+              dashboardController.menuDataPeternakan.value = 1;
               task.value = TaskType.todo;
               onSelected(TaskType.todo);
             },
           ),
           _button(
             selected: task.value == TaskType.inProgress,
-            label: "Ternak Jantan",
+            label: "Disiapkan",
             onPressed: () {
+              dashboardController.menuDataPeternakan.value = 2;
               task.value = TaskType.inProgress;
               onSelected(TaskType.inProgress);
             },
           ),
           _button(
             selected: task.value == TaskType.done,
-            label: "Ternak Betina",
+            label: "Dikirim",
             onPressed: () {
+              dashboardController.menuDataPeternakan.value = 3;
               task.value = TaskType.done;
               onSelected(TaskType.done);
             },
@@ -145,7 +155,8 @@ class _OverviewHeader extends StatelessWidget {
         ),
         style: ElevatedButton.styleFrom(
           primary: selected
-              ? Theme.of(Get.context!).cardColor
+              ? Colors.lightBlue
+              // ? Theme.of(Get.context!).cardColor
               : Theme.of(Get.context!).canvasColor,
           onPrimary: selected ? kFontColorPallets[0] : kFontColorPallets[2],
           shape: RoundedRectangleBorder(

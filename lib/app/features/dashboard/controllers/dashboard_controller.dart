@@ -1,8 +1,14 @@
 part of dashboard;
 
 class DashboardController extends GetxController {
+  // baru
+
+  final menuDataPeternakan = 0.obs;
+
+  //baru
+
   final indexDrawer = 0.obs;
-  // Data
+  // pilihan untuk dashboard
   _Profile getProfil() {
     return const _Profile(
       photo: AssetImage(ImageRasterPath.avatar1),
